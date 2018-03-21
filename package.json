@@ -1,0 +1,26 @@
+{
+  "name": "simplechat-socket.io",
+  "version": "1.0.0",
+  "description": "This is a simple chat whith separate rooms",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server/server.js"
+  },
+  "engines": {
+    "node": "8.1.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KovDimaY/SimpleChat-Socket.io.git"
+  },
+  "author": "Dmytro Kovalenko",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KovDimaY/SimpleChat-Socket.io/issues"
+  },
+  "homepage": "https://github.com/KovDimaY/SimpleChat-Socket.io#readme",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}
