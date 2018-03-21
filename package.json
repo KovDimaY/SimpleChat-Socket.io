@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/KovDimaY/SimpleChat-Socket.io#readme",
   "dependencies": {
-    "express": "^4.16.3"
+    "express": "^4.16.3",
+    "socket.io": "^2.0.4"
   }
 }
