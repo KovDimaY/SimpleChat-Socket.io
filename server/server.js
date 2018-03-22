@@ -3,7 +3,7 @@ const express = require('express');
 const http = require('http');
 const socketIO = require('socket.io');
 
-const { createMessage } = require('./utils/message');
+const { createMessage, createLocation } = require('./utils/message');
 
 const public = path.join(__dirname, '../public');
 const port = process.env.PORT || 3000;
@@ -13,17 +13,26 @@ const io = socketIO(server);
 
 app.use(express.static(public));
 
-io.on('connection', (socket) => {  
+io.on('connection', (socket) => {
   socket.emit('newMessage', createMessage("Admin", "Welcome to the Chat!"));
-  
+
   socket.broadcast.emit('newMessage', createMessage("Admin", "New User joined to the room"));
-  
+
   socket.on('createMessage', (message, callback) => {
     const { from, text } = message;
     io.emit('newMessage', createMessage(from, text));
-    callback('Server got the message');
+    if (typeof callback === 'function') {
+      callback('Server got the location');
+    }
   });
-  
+
+  socket.on('createLocation', (message, callback) => {
+    io.emit('newLocation', createLocation('User', message.lat, message.lon));
+    if (typeof callback === 'function') {
+      callback('Server got the location');
+    }
+  });
+
   socket.on('disconnect', () => {
     console.log("One user disconnected!");
   });
