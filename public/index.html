@@ -30,8 +30,46 @@
       </div>
     </div>
 
+    <script id="message" type="text/template">
+      <li class="message">
+        <div class="avatar__container">
+          <div class="avatar">
+          </div>
+        </div>
+        <div class="message__text">
+          <div class="message__title">
+            <h4>{{from}}</h4>
+            <span>{{timestamp}}</span>
+          </div>
+          <div class="message__body">
+            <p>{{text}}</p>
+          </div>
+        </div>
+      </li>
+    </script>
+    <script id="location" type="text/template">
+      <li class="message">
+        <div class="avatar__container">
+          <div class="avatar">
+          </div>
+        </div>
+        <div class="message__text">
+          <div class="message__title">
+            <h4>{{from}}</h4>
+            <span>{{timestamp}}</span>
+          </div>
+          <div class="message__body">
+            <p>
+              <a href="{{url}}" target="_blank">My current location</a>
+            </p>
+          </div>
+        </div>
+      </li>
+    </script>
     <script src="socket.io/socket.io.js"></script>
     <script src="js/libs/jquery-3.3.1.min.js"></script>
+    <script src="js/libs/moment.js"></script>
+    <script src="js/libs/mustache.js"></script>
     <script src="js/index.js"></script>
   </body>
 </html>

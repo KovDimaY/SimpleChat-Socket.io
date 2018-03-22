@@ -155,7 +155,24 @@ button:disabled {
 }
 
 .message {
-  padding: 10px;
+  padding: 5px;
+}
+
+.avatar__container {
+  height: 50px;
+  width: 50px;
+  display: inline-block;
+  background-image: url(../img/avatars/test.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  border: 1px solid;
+}
+
+.message__text {
+  display: inline-block;
+  vertical-align: top;
+  width: calc(100% - 65px);
+  margin-left: 5px;
 }
 
 .message__title {

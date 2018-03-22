@@ -9,19 +9,19 @@ socket.on('disconnect', function () {
 });
 
 socket.on('newMessage', function (message) {
-  const li = jQuery('<li></li>');
-  li.text(`${message.from}: ${message.text}`);
-  jQuery('#messages').append(li);
+  const { from, text } = message;
+  const timestamp = moment(message.timestamp).format('DD MMM, hh:mm:ss');
+  const template = jQuery('#message').html();
+  const html = Mustache.render(template, { from, text, timestamp });
+  jQuery('#messages').append(html);
 });
 
 socket.on('newLocation', function (message) {
-  const li = jQuery('<li></li>');
-  const a = jQuery('<a target="_blank">My current location</a>');
-
-  a.attr('href', message.url);
-  li.text(`${message.from}: `);
-  li.append(a);
-  jQuery('#messages').append(li);
+  const { from, url } = message;
+  const timestamp = moment(message.timestamp).format('DD MMM, hh:mm:ss');
+  const template = jQuery('#location').html();
+  const html = Mustache.render(template, { from, url, timestamp });
+  jQuery('#messages').append(html);
 });
 
 
