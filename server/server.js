@@ -15,15 +15,18 @@ const io = socketIO(server);
 app.use(express.static(public));
 
 io.on('connection', (socket) => {
-  socket.emit('newMessage', createMessage("Admin", "Welcome to the Chat!"));
-
-  socket.broadcast.emit('newMessage', createMessage("Admin", "New User joined to the room"));
-
   socket.on('join', (params, callback) => {
     if (!isValidName(params.name) || !isValidName(params.room)) {
       if (typeof callback === 'function') {
         callback("Names should have at least one valid character! :)");
       }
+    }
+    socket.join(params.room);
+    socket.emit('newMessage', createMessage("Admin", `Hi, ${params.name}! Welcome to our room!`));
+    socket.broadcast.to(params.room)
+      .emit('newMessage', createMessage("Admin", `${params.name} just joined our room!`));
+    if (typeof callback === 'function') {
+      callback();
     }
   });
 
