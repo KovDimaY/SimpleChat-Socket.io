@@ -15,7 +15,16 @@ function scrollToBottom() {
 }
 
 socket.on('connect', function () {
-  console.log("Welcome to the chat!");
+  const params = jQuery.deparam(window.location.search);
+
+  socket.emit('join', params, function (err) {
+    if (err) {
+      alert(err);
+      window.location.href = '/';
+    } else {
+
+    }
+  });
 });
 
 socket.on('disconnect', function () {

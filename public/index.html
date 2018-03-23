@@ -2,74 +2,29 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <title>Join | SimpleChat</title>
     <link rel="stylesheet" href="/css/styles.css">
   </head>
 
-  <body class="chat">
-    <div class="chat__sidebar">
-      <h3>People</h3>
-      <div id="users"></div>
+  <body class="centered-form">
+    <div class="centered-form__form">
+      <form action="/chat.html">
+        <div class="form-field">
+          <h3>Welcome to SimpleChat</h3>
+        </div>
+        <div class="form-field">
+          <label>Username/Login</label>
+          <input type="text" name="name" autofocus />
+        </div>
+        <div class="form-field">
+          <label>Room name</label>
+          <input type="text" name="room" autofocus />
+        </div>
+        <div class="form-field">
+          <button>Join</button>
+        </div>
+      </form>
     </div>
-
-    <div class="chat__main">
-      <ol id="messages" class="chat__messages"></ol>
-
-      <div class="chat__footer">
-        <form id="message-form">
-          <input
-            id="message-input"
-            name="message"
-            type="text"
-            placeholder="Enter your message"
-            autofocus
-            autocomplete="off"
-          />
-          <button>Send</button>
-        </form>
-        <button id="send-location">Send location</button>
-      </div>
-    </div>
-
-    <script id="message" type="text/template">
-      <li class="message">
-        <div class="avatar__container">
-          <div class="avatar">
-          </div>
-        </div>
-        <div class="message__text">
-          <div class="message__title">
-            <h4>{{from}}</h4>
-            <span>{{timestamp}}</span>
-          </div>
-          <div class="message__body">
-            <p>{{text}}</p>
-          </div>
-        </div>
-      </li>
-    </script>
-    <script id="location" type="text/template">
-      <li class="message">
-        <div class="avatar__container">
-          <div class="avatar">
-          </div>
-        </div>
-        <div class="message__text">
-          <div class="message__title">
-            <h4>{{from}}</h4>
-            <span>{{timestamp}}</span>
-          </div>
-          <div class="message__body">
-            <p>
-              <a href="{{url}}" target="_blank">My current location</a>
-            </p>
-          </div>
-        </div>
-      </li>
-    </script>
-    <script src="socket.io/socket.io.js"></script>
-    <script src="js/libs/jquery-3.3.1.min.js"></script>
-    <script src="js/libs/moment.js"></script>
-    <script src="js/libs/mustache.js"></script>
-    <script src="js/index.js"></script>
   </body>
 </html>

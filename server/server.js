@@ -4,6 +4,7 @@ const http = require('http');
 const socketIO = require('socket.io');
 
 const { createMessage, createLocation } = require('./utils/message');
+const { isValidName } = require('./utils/validation');
 
 const public = path.join(__dirname, '../public');
 const port = process.env.PORT || 3000;
@@ -17,6 +18,14 @@ io.on('connection', (socket) => {
   socket.emit('newMessage', createMessage("Admin", "Welcome to the Chat!"));
 
   socket.broadcast.emit('newMessage', createMessage("Admin", "New User joined to the room"));
+
+  socket.on('join', (params, callback) => {
+    if (!isValidName(params.name) || !isValidName(params.room)) {
+      if (typeof callback === 'function') {
+        callback("Names should have at least one valid character! :)");
+      }
+    }
+  });
 
   socket.on('createMessage', (message, callback) => {
     const { from, text } = message;
