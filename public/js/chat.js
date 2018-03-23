@@ -14,10 +14,10 @@ function scrollToBottom() {
   }
 }
 
-socket.on('connect', function () {
+socket.on('connect', function() {
   const params = jQuery.deparam(window.location.search);
 
-  socket.emit('join', params, function (err) {
+  socket.emit('join', params, function(err) {
     if (err) {
       alert(err);
       window.location.href = '/';
@@ -27,11 +27,17 @@ socket.on('connect', function () {
   });
 });
 
-socket.on('disconnect', function () {
-  console.log("You was disconnected!");
+socket.on('disconnect', function() {});
+
+socket.on('updateUserList', function(users) {
+  var ul = jQuery('<ul></ul>');
+  users.forEach(function(user) {
+    ul.append(jQuery('<li></li>').text(user));
+  });
+  jQuery('#users').html(ul);
 });
 
-socket.on('newMessage', function (message) {
+socket.on('newMessage', function(message) {
   const { from, text } = message;
   const timestamp = moment(message.timestamp).format('DD MMM, hh:mm:ss');
   const template = jQuery('#message').html();
@@ -40,7 +46,7 @@ socket.on('newMessage', function (message) {
   scrollToBottom();
 });
 
-socket.on('newLocation', function (message) {
+socket.on('newLocation', function(message) {
   const { from, url } = message;
   const timestamp = moment(message.timestamp).format('DD MMM, hh:mm:ss');
   const template = jQuery('#location').html();
@@ -56,8 +62,8 @@ jQuery('#message-form').on('submit', function(e) {
   const from = 'User';
   const text = messageInput.val();
 
-  if (text) {
-    socket.emit('createMessage', { from, text }, function (res) {
+  if (text && text.trim().length > 0) {
+    socket.emit('createMessage', { from, text }, function(res) {
       if (res) {
         messageInput.val('');
       }
@@ -79,7 +85,7 @@ locationButton.on('click', function() {
       lat: position.coords.latitude,
       lon: position.coords.longitude,
     });
-  }, function () {
+  }, function() {
     alert('Unable to get your location. Make sure you have permissions enabled.');
   });
 });

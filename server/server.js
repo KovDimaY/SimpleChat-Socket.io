@@ -3,6 +3,7 @@ const express = require('express');
 const http = require('http');
 const socketIO = require('socket.io');
 
+const { Users } = require('./utils/users');
 const { createMessage, createLocation } = require('./utils/message');
 const { isValidName } = require('./utils/validation');
 
@@ -11,6 +12,7 @@ const port = process.env.PORT || 3000;
 const app = express();
 const server = http.createServer(app);
 const io = socketIO(server);
+const users = new Users();
 
 app.use(express.static(public));
 
@@ -21,32 +23,51 @@ io.on('connection', (socket) => {
         callback("Names should have at least one valid character! :)");
       }
     }
+    console.log(params.name, " has joined the room ", params.room);
     socket.join(params.room);
-    socket.emit('newMessage', createMessage("Admin", `Hi, ${params.name}! Welcome to our room!`));
+    users.removeUser(socket.id);
+    users.addUser(socket.id, params.name, params.room);
+    io.to(params.room)
+      .emit('updateUserList', users.getUsernamesList(params.room));
+    socket.emit('newMessage', createMessage("Admin", `Hi, ${params.name}! Welcome to our room! :D`));
     socket.broadcast.to(params.room)
-      .emit('newMessage', createMessage("Admin", `${params.name} just joined our room!`));
+      .emit('newMessage', createMessage("Admin", `${params.name} just joined our room! :D`));
     if (typeof callback === 'function') {
       callback();
     }
   });
 
   socket.on('createMessage', (message, callback) => {
-    const { from, text } = message;
-    io.emit('newMessage', createMessage(from, text));
+    const user = users.getUser(socket.id);
+    if (user) {
+      const { from, text } = message;
+      io.to(user.room).emit('newMessage', createMessage(user.name, text));
+    }
     if (typeof callback === 'function') {
-      callback('Server got the location');
+      callback('Server got the message');
     }
   });
 
   socket.on('createLocation', (message, callback) => {
-    io.emit('newLocation', createLocation('User', message.lat, message.lon));
+    const user = users.getUser(socket.id);
+    if (user) {
+      const { from, text } = message;
+      io.to(user.room).emit('newLocation', createLocation(user.name, message.lat, message.lon));
+    }
     if (typeof callback === 'function') {
       callback('Server got the location');
     }
   });
 
   socket.on('disconnect', () => {
-    console.log("One user disconnected!");
+    const user = users.removeUser(socket.id);
+    console.log(user.name, " has left the room ", user.room);
+    if (user) {
+      io.to(user.room)
+        .emit('updateUserList', users.getUsernamesList(user.room));
+      io.to(user.room)
+        .emit('newMessage', createMessage("Admin", `${user.name} just left our room! :(`));
+    }
   });
 });
 
