@@ -26,7 +26,7 @@ io.on('connection', (socket) => {
     console.log(params.name, " has joined the room ", params.room);
     socket.join(params.room);
     users.removeUser(socket.id);
-    users.addUser(socket.id, params.name, params.room);
+    users.addUser(socket.id, params.name, params.room, params.avatar);
     io.to(params.room)
       .emit('updateUserList', users.getUsernamesList(params.room));
     socket.emit('newMessage', createMessage("Admin", `Hi, ${params.name}! Welcome to our room! :D`));
