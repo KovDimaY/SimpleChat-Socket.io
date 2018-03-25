@@ -15,6 +15,7 @@ class Users {
 
   addUser(id, name, room) {
     const user = { id, name, room };
+    user.avatar = 'test.png'; // this is temporary, very soon the avatars handling will be implemented
     this.users.push(user);
 
     return user;
