@@ -32,7 +32,10 @@ describe('Users class:', () => {
 
       users.addUser(user.id, user.name, user.room);
 
-      expect(users.users).toEqual([user]);
+      expect(users.users[0].id).toBe(user.id);
+      expect(users.users[0].name).toBe(user.name);
+      expect(users.users[0].room).toBe(user.room);
+      expect(users.users[0].avatar).toBe('test.png');
     });
   });
 
@@ -41,7 +44,6 @@ describe('Users class:', () => {
 
     it('should return the user by correct id=111', () => {
       const user = users.getUser(111);
-
       expect(user).toEqual(users.users[0]);
     });
 

@@ -162,7 +162,6 @@ button:disabled {
   height: 50px;
   width: 50px;
   display: inline-block;
-  background-image: url(../img/avatars/test.png);
   background-repeat: no-repeat;
   background-size: contain;
   border: 1px solid;

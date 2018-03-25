@@ -41,7 +41,7 @@ io.on('connection', (socket) => {
     const user = users.getUser(socket.id);
     if (user) {
       const { from, text } = message;
-      io.to(user.room).emit('newMessage', createMessage(user.name, text));
+      io.to(user.room).emit('newMessage', createMessage(user.name, text, user.avatar));
     }
     if (typeof callback === 'function') {
       callback('Server got the message');
@@ -51,8 +51,8 @@ io.on('connection', (socket) => {
   socket.on('createLocation', (message, callback) => {
     const user = users.getUser(socket.id);
     if (user) {
-      const { from, text } = message;
-      io.to(user.room).emit('newLocation', createLocation(user.name, message.lat, message.lon));
+      const { lat, lon } = message;
+      io.to(user.room).emit('newLocation', createLocation(user.name, lat, lon, user.avatar));
     }
     if (typeof callback === 'function') {
       callback('Server got the location');
