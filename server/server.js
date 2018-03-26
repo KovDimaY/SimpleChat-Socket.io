@@ -18,22 +18,26 @@ app.use(express.static(public));
 
 io.on('connection', (socket) => {
   socket.on('join', (params, callback) => {
-    if (!isValidName(params.name) || !isValidName(params.room)) {
-      if (typeof callback === 'function') {
-        callback("Names should have at least one valid character! :)");
-      }
-    }
-    console.log(params.name, " has joined the room ", params.room);
-    socket.join(params.room);
-    users.removeUser(socket.id);
-    users.addUser(socket.id, params.name, params.room);
-    io.to(params.room)
-      .emit('updateUserList', users.getUsernamesList(params.room));
-    socket.emit('newMessage', createMessage("Admin", `Hi, ${params.name}! Welcome to our room! :D`));
-    socket.broadcast.to(params.room)
-      .emit('newMessage', createMessage("Admin", `${params.name} just joined our room! :D`));
+    const name = params.name.trim();
+    const room = params.room.trim();
+    const avatar = params.avatar.trim();
     if (typeof callback === 'function') {
-      callback();
+      if (!isValidName(name))
+        callback("Your name should have at least one valid character!");
+      else if (!isValidName(room)) {
+        callback("A room name should have at least one valid character!");
+      } else {
+        console.log(name, " has joined the room ", room);
+        socket.join(room);
+        users.removeUser(socket.id);
+        users.addUser(socket.id, name, room, avatar);
+        io.to(room)
+          .emit('updateUserList', users.getUsernamesList(room));
+        socket.emit('newMessage', createMessage("Admin", `Hi, ${name}! Welcome to our room! :D`));
+        socket.broadcast.to(room)
+          .emit('newMessage', createMessage("Admin", `${name} just joined our room! :D`));
+        callback();
+      }
     }
   });
 
@@ -41,7 +45,7 @@ io.on('connection', (socket) => {
     const user = users.getUser(socket.id);
     if (user) {
       const { from, text } = message;
-      io.to(user.room).emit('newMessage', createMessage(user.name, text));
+      io.to(user.room).emit('newMessage', createMessage(user.name, text, user.avatar));
     }
     if (typeof callback === 'function') {
       callback('Server got the message');
@@ -51,8 +55,8 @@ io.on('connection', (socket) => {
   socket.on('createLocation', (message, callback) => {
     const user = users.getUser(socket.id);
     if (user) {
-      const { from, text } = message;
-      io.to(user.room).emit('newLocation', createLocation(user.name, message.lat, message.lon));
+      const { lat, lon } = message;
+      io.to(user.room).emit('newLocation', createLocation(user.name, lat, lon, user.avatar));
     }
     if (typeof callback === 'function') {
       callback('Server got the location');
@@ -61,8 +65,8 @@ io.on('connection', (socket) => {
 
   socket.on('disconnect', () => {
     const user = users.removeUser(socket.id);
-    console.log(user.name, " has left the room ", user.room);
     if (user) {
+      console.log(user.name, " has left the room ", user.room);
       io.to(user.room)
         .emit('updateUserList', users.getUsernamesList(user.room));
       io.to(user.room)

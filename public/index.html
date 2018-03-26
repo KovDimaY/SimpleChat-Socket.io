@@ -11,20 +11,30 @@
     <div class="centered-form__form">
       <form action="/chat.html">
         <div class="form-field">
-          <h3>Welcome to SimpleChat</h3>
+          <h2 class="title-welcome">Welcome to</h2>
+          <h2 class="title-name">SimpleChat</h2>
+        </div>
+        <div class="form-field">
+          <label>Gender</label>
+          <span>
+            <input type="radio" name="avatar" value="male.png" checked style="margin-left: 50px;" /> Male
+            <input type="radio" name="avatar" value="female.png" style="margin-left: 40px;"/> Female
+          </span>
         </div>
         <div class="form-field">
           <label>Username/Login</label>
-          <input type="text" name="name" autofocus />
+          <input id="name-input" type="text" name="name" placeholder="Enter your name here" autofocus required/>
         </div>
         <div class="form-field">
           <label>Room name</label>
-          <input type="text" name="room" autofocus />
+          <input id="room-input" type="text" name="room" placeholder="Enter a name for the room" required/>
         </div>
         <div class="form-field">
           <button>Join</button>
         </div>
       </form>
     </div>
+    <script src="js/libs/jquery-3.3.1.min.js"></script>
+    <script src="js/index.js"></script>
   </body>
 </html>

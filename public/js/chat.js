@@ -19,8 +19,9 @@ socket.on('connect', function() {
 
   socket.emit('join', params, function(err) {
     if (err) {
-      alert(err);
-      window.location.href = '/';
+      swal("Error", err, "error").then(function() {
+        window.location.href = '/';
+      });
     } else {
 
     }
@@ -39,18 +40,20 @@ socket.on('updateUserList', function(users) {
 
 socket.on('newMessage', function(message) {
   const { from, text } = message;
+  let avatar = message.avatar;
+  if (from === 'Admin') avatar = 'admin-1.png';
   const timestamp = moment(message.timestamp).format('DD MMM, hh:mm:ss');
   const template = jQuery('#message').html();
-  const html = Mustache.render(template, { from, text, timestamp });
+  const html = Mustache.render(template, { from, avatar, text, timestamp });
   jQuery('#messages').append(html);
   scrollToBottom();
 });
 
 socket.on('newLocation', function(message) {
-  const { from, url } = message;
+  const { from, url, avatar } = message;
   const timestamp = moment(message.timestamp).format('DD MMM, hh:mm:ss');
   const template = jQuery('#location').html();
-  const html = Mustache.render(template, { from, url, timestamp });
+  const html = Mustache.render(template, { from, avatar, url, timestamp });
   jQuery('#messages').append(html);
   scrollToBottom();
 });

@@ -8,21 +8,41 @@ const populateUsers = () => {
   users.users = [{
     id: 111,
     name: "testName1",
-    room: "testRoom1"
+    room: "testRoom1",
+    avatar: "male.jpg"
   }, {
     id: 222,
     name: "testName2",
-    room: "testRoom2"
+    room: "testRoom2",
+    avatar: "female.jpg"
   }, {
     id: 333,
     name: "testName3",
-    room: "testRoom1"
+    room: "testRoom1",
+    avatar: "admin-1.jpg"
   }];
 };
 
 describe('Users class:', () => {
   describe('addUser', () => {
-    it('should add new user', () => {
+    it('should add new user with avatar', () => {
+      const users = new Users();
+      const user = {
+        id: 123,
+        name: "testName",
+        room: "testRoom",
+        avatar: "male.png"
+      };
+
+      users.addUser(user.id, user.name, user.room, user.avatar);
+
+      expect(users.users[0].id).toBe(user.id);
+      expect(users.users[0].name).toBe(user.name);
+      expect(users.users[0].room).toBe(user.room);
+      expect(users.users[0].avatar).toBe('male.png');
+    });
+
+    it('should add new user without avatar', () => {
       const users = new Users();
       const user = {
         id: 123,
@@ -30,9 +50,12 @@ describe('Users class:', () => {
         room: "testRoom"
       };
 
-      users.addUser(user.id, user.name, user.room);
+      users.addUser(user.id, user.name, user.room, user.avatar);
 
-      expect(users.users).toEqual([user]);
+      expect(users.users[0].id).toBe(user.id);
+      expect(users.users[0].name).toBe(user.name);
+      expect(users.users[0].room).toBe(user.room);
+      expect(users.users[0].avatar).toBe('404.png');
     });
   });
 
@@ -41,7 +64,6 @@ describe('Users class:', () => {
 
     it('should return the user by correct id=111', () => {
       const user = users.getUser(111);
-
       expect(user).toEqual(users.users[0]);
     });
 
