@@ -18,22 +18,23 @@ app.use(express.static(public));
 
 io.on('connection', (socket) => {
   socket.on('join', (params, callback) => {
-    if (!isValidName(params.name) || !isValidName(params.room)) {
-      if (typeof callback === 'function') {
-        callback("Names should have at least one valid character! :)");
-      }
-    }
-    console.log(params.name, " has joined the room ", params.room);
-    socket.join(params.room);
-    users.removeUser(socket.id);
-    users.addUser(socket.id, params.name, params.room, params.avatar);
-    io.to(params.room)
-      .emit('updateUserList', users.getUsernamesList(params.room));
-    socket.emit('newMessage', createMessage("Admin", `Hi, ${params.name}! Welcome to our room! :D`));
-    socket.broadcast.to(params.room)
-      .emit('newMessage', createMessage("Admin", `${params.name} just joined our room! :D`));
     if (typeof callback === 'function') {
-      callback();
+      if (!isValidName(params.name))
+        callback("Your name should have at least one valid character!");
+      else if (!isValidName(params.room)) {
+        callback("A room name should have at least one valid character!");
+      } else {
+        console.log(params.name, " has joined the room ", params.room);
+        socket.join(params.room);
+        users.removeUser(socket.id);
+        users.addUser(socket.id, params.name, params.room, params.avatar);
+        io.to(params.room)
+          .emit('updateUserList', users.getUsernamesList(params.room));
+        socket.emit('newMessage', createMessage("Admin", `Hi, ${params.name}! Welcome to our room! :D`));
+        socket.broadcast.to(params.room)
+          .emit('newMessage', createMessage("Admin", `${params.name} just joined our room! :D`));
+        callback();
+      }
     }
   });
 
@@ -61,8 +62,8 @@ io.on('connection', (socket) => {
 
   socket.on('disconnect', () => {
     const user = users.removeUser(socket.id);
-    console.log(user.name, " has left the room ", user.room);
     if (user) {
+      console.log(user.name, " has left the room ", user.room);
       io.to(user.room)
         .emit('updateUserList', users.getUsernamesList(user.room));
       io.to(user.room)
