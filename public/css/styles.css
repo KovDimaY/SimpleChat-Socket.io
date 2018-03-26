@@ -72,6 +72,7 @@ button:disabled {
 .form-field label {
   display: block;
   margin-bottom: 7px;
+  font-weight: bold;
 }
 
 .form-field input, .form-field select {

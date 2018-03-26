@@ -1,21 +1,28 @@
+const _ = require('lodash');
+
+const validAvatars = [
+  'male.png',
+  'female.png'
+];
+
+
 /***
 User schema:
 {
   id: Number,
   name: String,
   room: String,
+  avatar: String
 }
 ***/
-
-
 class Users {
   constructor() {
     this.users = [];
   }
 
-  addUser(id, name, room) {
+  addUser(id, name, room, avatar) {
     const user = { id, name, room };
-    user.avatar = 'test.png'; // this is temporary, very soon the avatars handling will be implemented
+    user.avatar = this.saveAvatar(avatar);
     this.users.push(user);
 
     return user;
@@ -36,6 +43,13 @@ class Users {
     const users = this.users.filter(user => user.room === room);
     const namesArray = users.map(user => user.name);
     return namesArray;
+  }
+
+  saveAvatar(avatar) {
+    if (_.includes(validAvatars, avatar)) {
+      return avatar;
+    }
+    return '404.png';
   }
 }
 
