@@ -19,8 +19,9 @@ socket.on('connect', function() {
 
   socket.emit('join', params, function(err) {
     if (err) {
-      alert(err);
-      window.location.href = '/';
+      swal("Error", err, "error").then(function() {
+        window.location.href = '/';
+      });
     } else {
 
     }
