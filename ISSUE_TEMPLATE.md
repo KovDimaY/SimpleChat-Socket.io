@@ -1,4 +1,5 @@
 Please make sure these boxes are checked before submitting your issue, thank you!
+<!--- to make the checkbox checked, put "X" between "[]" like this: [X] -->
 
 * [ ] Make sure similar issue is not yet created.
 * [ ] Make sure you provide a short and meaningful title:
@@ -10,4 +11,4 @@ Please make sure these boxes are checked before submitting your issue, thank you
 * [ ] Make sure you assign the issue to **KovDimaY** (the owner of the repo).
 * [ ] Make sure you DO NOT connect the issue to any project.
 
-*(to make the checkbox checked, put "X" between "[]")*
+
