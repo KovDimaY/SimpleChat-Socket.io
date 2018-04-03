@@ -64,11 +64,12 @@ jQuery('#message-form').on('submit', function(e) {
   const messageInput = jQuery('#message-input');
   const from = 'User';
   const text = messageInput.val();
+  messageInput.val('');
 
   if (text && text.trim().length > 0) {
-    socket.emit('createMessage', { from, text }, function(res) {
-      if (res) {
-        messageInput.val('');
+    socket.emit('createMessage', { from, text }, function(err) {
+      if (err) {
+        messageInput.val(text);
       }
     });
   }
