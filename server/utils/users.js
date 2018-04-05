@@ -51,6 +51,12 @@ class Users {
     }
     return '404.png';
   }
+
+  isUniqueName(name, room) {
+    const existingNames = this.getUsernamesList(room);
+
+    return !_.includes(existingNames, name);
+  }
 }
 
 module.exports = { Users };

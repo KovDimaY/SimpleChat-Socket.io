@@ -21,10 +21,12 @@ io.on('connection', (socket) => {
     const name = params.name.trim();
     const room = params.room.trim();
     const avatar = params.avatar.trim();
-    if (!isValidName(name))
+    if (!isValidName(name)) {
       callback("Your name should have at least one valid character!");
-    else if (!isValidName(room)) {
+    } else if (!isValidName(room)) {
       callback("A room name should have at least one valid character!");
+    } else if (!users.isUniqueName(name, room)) {
+      callback(`A user with nickname ${name} already exists in this room. Take another nickname, please.`);
     } else {
       console.log(name, " has joined the room ", room);
       socket.join(room);
