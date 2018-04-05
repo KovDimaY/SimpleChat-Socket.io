@@ -139,4 +139,26 @@ describe('Users class:', () => {
       expect(names).toEqual([]);
     });
   });
+
+  describe('isUniqueName', () => {
+    beforeEach(populateUsers);
+
+    it('should return true for a unique name', () => {
+      const result = users.isUniqueName('this is a unique name', 'testRoom1');
+
+      expect(result).toEqual(true);
+    });
+
+    it('should return false for a duplicated name', () => {
+      const result = users.isUniqueName('testName1', 'testRoom1');
+
+      expect(result).toEqual(false);
+    });
+
+    it('should return true for a duplicated name from another room', () => {
+      const result = users.isUniqueName('testName1', 'testRoom2');
+
+      expect(result).toEqual(true);
+    });
+  });
 });
