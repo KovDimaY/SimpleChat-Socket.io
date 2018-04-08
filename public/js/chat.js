@@ -41,19 +41,23 @@ socket.on('updateUserList', function(users) {
 socket.on('newMessage', function(message) {
   const { from, text } = message;
   let avatar = message.avatar;
-  if (from === 'Admin') avatar = 'admin-1.png';
+  let color = message.color;
+  if (from === 'Admin') {
+    avatar = 'admin-1.png';
+    color = 'black';
+  }
   const timestamp = moment(message.timestamp).format('DD MMM, hh:mm:ss');
   const template = jQuery('#message').html();
-  const html = Mustache.render(template, { from, avatar, text, timestamp });
+  const html = Mustache.render(template, { from, avatar, text, timestamp, color });
   jQuery('#messages').append(html);
   scrollToBottom();
 });
 
 socket.on('newLocation', function(message) {
-  const { from, url, avatar } = message;
+  const { from, url, avatar, color } = message;
   const timestamp = moment(message.timestamp).format('DD MMM, hh:mm:ss');
   const template = jQuery('#location').html();
-  const html = Mustache.render(template, { from, avatar, url, timestamp });
+  const html = Mustache.render(template, { from, avatar, url, timestamp, color });
   jQuery('#messages').append(html);
   scrollToBottom();
 });
@@ -88,6 +92,10 @@ locationButton.on('click', function() {
     socket.emit('createLocation', {
       lat: position.coords.latitude,
       lon: position.coords.longitude,
+    }, function(err) {
+      if (err) {
+        console.log(err);
+      }
     });
   }, function() {
     alert('Unable to get your location. Make sure you have permissions enabled.');

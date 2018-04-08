@@ -1,10 +1,10 @@
 const _ = require('lodash');
 
+const colors = ["#7cb5ec","#90ed7d","#f7a35c","#8085e9","#f15c80","#e4d354","#2b908f","#f45b5b","#91e8e1"];
 const validAvatars = [
   'male.png',
   'female.png'
 ];
-
 
 /***
 User schema:
@@ -12,7 +12,8 @@ User schema:
   id: Number,
   name: String,
   room: String,
-  avatar: String
+  avatar: String,
+  color: String
 }
 ***/
 class Users {
@@ -23,9 +24,15 @@ class Users {
   addUser(id, name, room, avatar) {
     const user = { id, name, room };
     user.avatar = this.saveAvatar(avatar);
+    user.color = this.assignColor(colors);
     this.users.push(user);
 
     return user;
+  }
+
+  assignColor(colors) {
+    const randIdx = Math.floor(Math.random() * colors.length);
+    return colors[randIdx];
   }
 
   getUser(id) {
