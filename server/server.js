@@ -45,7 +45,7 @@ io.on('connection', (socket) => {
     const user = users.getUser(socket.id);
     if (user) {
       const { from, text } = message;
-      io.to(user.room).emit('newMessage', createMessage(user.name, text, user.avatar));
+      io.to(user.room).emit('newMessage', createMessage(user.name, text, user.avatar, user.color));
       callback();
     } else {
       callback('The user does not exist');
@@ -56,7 +56,7 @@ io.on('connection', (socket) => {
     const user = users.getUser(socket.id);
     if (user) {
       const { lat, lon } = message;
-      io.to(user.room).emit('newLocation', createLocation(user.name, lat, lon, user.avatar));
+      io.to(user.room).emit('newLocation', createLocation(user.name, lat, lon, user.avatar, user.color));
       callback();
     } else {
       callback('The user does not exist');
