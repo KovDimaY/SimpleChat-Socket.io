@@ -17,6 +17,43 @@ h3 {
   font-size: 1.5rem;
 }
 
+/*
+This is styles for the initial page avatars
+*/
+
+.avatar-selection-container {
+  width:100%;
+  text-align:center;
+}
+
+.avatar-selection {
+  width: 75px;
+  height: 75px;
+  margin: 3px;
+  display: inline-block;
+  cursor: pointer;
+  border: 3px solid black;
+  background-repeat: no-repeat;
+  background-size: contain;
+  filter: grayscale(95%);
+}
+
+.avatar-male {
+  background-color: skyblue;
+}
+
+.avatar-female {
+  background-color: pink;
+}
+
+.avatar-active {
+  filter: none;
+}
+
+.avatar-selection input {
+  display: none;
+}
+
 button, .swal-button {
   border: none;
   background: #265f82;
@@ -53,7 +90,8 @@ button:disabled {
 .centered-form {
   display: flex;
   align-items: center;
-  height: 100vh;
+  padding-bottom: 80px;
+  padding-top: 50px;
   width: 100vw;
   justify-content: center;
   background: -moz-linear-gradient(125deg, rgba(39,107,130,1) 0%, rgba(49,84,129,1) 100%); /* ff3.6+ */
@@ -70,7 +108,7 @@ button:disabled {
   border-radius: 5px;
   padding: 0px 20px;
   margin: 20px;
-  width: 300px;
+  width: 500px;
 }
 
 .form-field {
