@@ -18,9 +18,9 @@ app.use(express.static(public));
 
 io.on('connection', (socket) => {
   socket.on('join', (params, callback) => {
-    const name = params.name.trim();
-    const room = params.room.trim();
-    const avatar = params.avatar.trim();
+    const name = params.name && params.name.trim();
+    const room = params.room && params.room.trim();
+    const avatar = params.avatar && params.avatar.trim();
     if (!isValidName(name)) {
       callback("Your name should have at least one valid character!");
     } else if (!isValidName(room)) {
