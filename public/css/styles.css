@@ -90,8 +90,8 @@ button:disabled {
 .centered-form {
   display: flex;
   align-items: center;
-  padding-bottom: 80px;
-  padding-top: 50px;
+  padding-bottom: 120px;
+  padding-top: 20px;
   width: 100vw;
   justify-content: center;
   background: -moz-linear-gradient(125deg, rgba(39,107,130,1) 0%, rgba(49,84,129,1) 100%); /* ff3.6+ */
@@ -137,7 +137,7 @@ button:disabled {
 .chat__sidebar {
   overflow-y: scroll;
   width: 260px;
-  height: 100vh;
+  height: calc(100vh - 90px);
   background: -moz-linear-gradient(125deg, rgba(39,107,130,1) 0%, rgba(49,84,129,1) 100%); /* ff3.6+ */
   background: -webkit-gradient(linear, left top, right bottom, color-stop(0%, rgba(49,84,129,1)), color-stop(100%, rgba(39,107,130,1))); /* safari4+,chrome */
   background: -webkit-linear-gradient(125deg, rgba(39,107,130,1) 0%, rgba(49,84,129,1) 100%); /* safari5.1+,chrome10+ */
@@ -167,7 +167,7 @@ button:disabled {
 .chat__main {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: calc(100vh - 95px);
   width: 100%;
 }
 
@@ -237,6 +237,84 @@ button:disabled {
 
 .message__title span {
   color: #999;
+}
+
+footer {
+  padding: 10px;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: darkred;
+  background: linear-gradient(to right, rgba(39,107,130,1),rgba(49,84,129,1),rgba(39,107,130,1));
+  box-shadow: 0px -5px 20px black;
+  color: white;
+  text-align: center;
+}
+
+footer i {
+  color: lightgray;
+  text-shadow: 2px 1px 5px black;
+  font-size: 25px !important;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+footer p {
+  margin: 5px;
+  font-size: 12px;
+  color: lightgray;
+  text-shadow: 2px 1px 5px black;
+}
+
+footer .author {
+  font-size: 16px;
+  color: white;
+}
+
+footer a {
+  color: white;
+  font-size: 12px;
+}
+
+
+
+
+
+footer .social-media-icons {
+  float: right;
+  margin-right: 10%;
+}
+
+footer .social-media-icons i {
+  font-size: 24px;
+  color: #999;
+  transition: 0.5s ease-in-out;
+}
+
+footer .social-media-icons a {
+  margin-right: 20px;
+  text-shadow: 3px 3px 5px black;
+}
+
+footer .footer-github:hover i {
+  color: #000000;
+  text-shadow: 3px 3px 5px black;
+}
+
+footer .footer-facebook:hover i {
+  color: #3b5998;
+  text-shadow: 3px 3px 5px black;
+}
+
+footer .footer-vk:hover i {
+  color: #507299;
+  text-shadow: 3px 3px 5px black;
+}
+
+footer .footer-linkedin:hover i {
+  color: #0077b5;
+  text-shadow: 3px 3px 5px black;
 }
 
 @media (max-width: 600px) {
