@@ -11,7 +11,11 @@
 
   <body class="chat">
     <div class="chat__sidebar">
-      <h3>People</h3>
+      <h3>Room:</h3>
+      <div class="room-name-wrapper">
+        <h5 id="room-name"></h5>
+        <i title="Copy to clipboard" class="fa fa-clone clone-icon" onclick="copyToClipboard()"></i>
+      </div>
       <div id="users"></div>
     </div>
 

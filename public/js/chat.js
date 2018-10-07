@@ -14,6 +14,16 @@ function scrollToBottom() {
   }
 }
 
+function copyToClipboard() {
+  const text = jQuery('#room-name').html();
+  const dummy = document.createElement("input");
+  document.body.appendChild(dummy);
+  dummy.setAttribute('value', text);
+  dummy.select();
+  document.execCommand("copy");
+  document.body.removeChild(dummy);
+}
+
 socket.on('connect', function() {
   const params = jQuery.deparam(window.location.search);
 
@@ -101,3 +111,12 @@ locationButton.on('click', function() {
     alert('Unable to get your location. Make sure you have permissions enabled.');
   });
 });
+
+window.onload = function() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const room = urlParams.get('room');
+  const roomNode = jQuery('#room-name');
+
+  roomNode.html(room);
+  roomNode.prop('title', room);
+}
