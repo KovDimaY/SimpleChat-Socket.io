@@ -90,7 +90,7 @@ button:disabled {
 .centered-form {
   display: flex;
   align-items: center;
-  padding-bottom: 120px;
+  padding-bottom: 50px;
   padding-top: 20px;
   width: 100vw;
   justify-content: center;
@@ -137,7 +137,7 @@ button:disabled {
 .chat__sidebar {
   overflow-y: scroll;
   width: 260px;
-  height: calc(100vh - 90px);
+  height: 100vh;
   background: -moz-linear-gradient(125deg, rgba(39,107,130,1) 0%, rgba(49,84,129,1) 100%); /* ff3.6+ */
   background: -webkit-gradient(linear, left top, right bottom, color-stop(0%, rgba(49,84,129,1)), color-stop(100%, rgba(39,107,130,1))); /* safari4+,chrome */
   background: -webkit-linear-gradient(125deg, rgba(39,107,130,1) 0%, rgba(49,84,129,1) 100%); /* safari5.1+,chrome10+ */
@@ -167,7 +167,7 @@ button:disabled {
 .chat__main {
   display: flex;
   flex-direction: column;
-  height: calc(100vh - 95px);
+  height: 100vh;
   width: 100%;
 }
 
@@ -241,9 +241,6 @@ button:disabled {
 
 footer {
   padding: 10px;
-  position: fixed;
-  left: 0;
-  bottom: 0;
   width: 100%;
   background-color: darkred;
   background: linear-gradient(to right, rgba(39,107,130,1),rgba(49,84,129,1),rgba(39,107,130,1));
