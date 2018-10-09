@@ -15,19 +15,19 @@ I will appreciate a lot your feedback and your opinion about the project. Feel f
 
 
 ### Screenshots:
-1) Join Page:
+1) Join Page:<br>
 ![image](https://user-images.githubusercontent.com/26466644/46696500-91a83e00-cc12-11e8-9574-8e73ed0588d9.png)
 
-2) Chat Page:
+2) Chat Page:<br>
 ![image](https://user-images.githubusercontent.com/26466644/46697331-aede0c00-cc14-11e8-8d28-1127ec9bb979.png)
 
-3) Validation message:
+3) Validation message:<br>
 ![image](https://user-images.githubusercontent.com/26466644/46697427-dfbe4100-cc14-11e8-8d7f-40d235856829.png)
 
-4) Not Found Page:
+4) Not Found Page:<br>
 ![image](https://user-images.githubusercontent.com/26466644/46697498-0ed4b280-cc15-11e8-8ece-90d0df245529.png)
 
-5) Tests:
+5) Tests:<br>
 ![image](https://user-images.githubusercontent.com/26466644/46698255-d2a25180-cc16-11e8-9236-9f39e2125372.png)
 
 <br>
