@@ -31,7 +31,7 @@ describe('Users class:', () => {
         id: 123,
         name: "testName",
         room: "testRoom",
-        avatar: "male.png"
+        avatar: "male0.png"
       };
 
       users.addUser(user.id, user.name, user.room, user.avatar);
@@ -39,7 +39,7 @@ describe('Users class:', () => {
       expect(users.users[0].id).toBe(user.id);
       expect(users.users[0].name).toBe(user.name);
       expect(users.users[0].room).toBe(user.room);
-      expect(users.users[0].avatar).toBe('male.png');
+      expect(users.users[0].avatar).toBe('male0.png');
       expect(users.users[0].color).toBeTruthy();
     });
 

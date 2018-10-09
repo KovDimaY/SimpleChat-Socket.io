@@ -1,6 +1,6 @@
 {
   "name": "simplechat-socket.io",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "This is a simple chat whith separate rooms",
   "main": "index.js",
   "scripts": {
@@ -15,7 +15,7 @@
     "url": "git+https://github.com/KovDimaY/SimpleChat-Socket.io.git"
   },
   "author": "Dmytro Kovalenko",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/KovDimaY/SimpleChat-Socket.io/issues"
   },
