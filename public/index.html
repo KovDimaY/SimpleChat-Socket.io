@@ -4,36 +4,61 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <title>Join | SimpleChat</title>
+    <link href="./css/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/css/styles.css">
+    <link rel="icon" href="/img/favicon.png" type="image/x-icon">
   </head>
 
-  <body class="centered-form">
-    <div class="centered-form__form">
-      <form action="/chat.html">
-        <div class="form-field">
-          <h2 class="title-welcome">Welcome to</h2>
-          <h2 class="title-name">SimpleChat</h2>
+  <body>
+    <div class="centered-form">
+      <div class="centered-form__form">
+          <form action="/chat.html">
+            <div class="form-field">
+              <h2 class="title-welcome">Welcome to</h2>
+              <h2 class="title-name">SimpleChat</h2>
+            </div>
+            <div class="form-field">
+              <label>Select avatar</label>
+              <div class="avatar-selection-container">
+                <div class="avatar-selection avatar-male avatar-active" style="background-image: url(./img/avatars/male0.png);" onclick="selectAvatar(this)"><input type="radio" name="avatar" value="male0.png" checked></div>
+                <div class="avatar-selection avatar-female" style="background-image: url(./img/avatars/female0.png);" onclick="selectAvatar(this)"><input type="radio" name="avatar" value="female0.png" /></div>
+                <div class="avatar-selection avatar-male" style="background-image: url(./img/avatars/male1.png);" onclick="selectAvatar(this)"><input type="radio" name="avatar" value="male1.png" /></div>
+                <div class="avatar-selection avatar-female" style="background-image: url(./img/avatars/female1.png);" onclick="selectAvatar(this)"><input type="radio" name="avatar" value="female1.png" /></div>
+                <div class="avatar-selection avatar-male" style="background-image: url(./img/avatars/male2.png);" onclick="selectAvatar(this)"><input type="radio" name="avatar" value="male2.png" /></div>
+                <div class="avatar-selection avatar-female" style="background-image: url(./img/avatars/female2.png);" onclick="selectAvatar(this)"><input type="radio" name="avatar" value="female2.png" /></div>
+                <div class="avatar-selection avatar-male" style="background-image: url(./img/avatars/male3.png);" onclick="selectAvatar(this)"><input type="radio" name="avatar" value="male3.png" /></div>
+                <div class="avatar-selection avatar-female" style="background-image: url(./img/avatars/female3.png);" onclick="selectAvatar(this)"><input type="radio" name="avatar" value="female3.png" /></div>
+                <div class="avatar-selection avatar-male" style="background-image: url(./img/avatars/male4.png);" onclick="selectAvatar(this)"><input type="radio" name="avatar" value="male4.png" /></div>
+                <div class="avatar-selection avatar-female" style="background-image: url(./img/avatars/female4.png);" onclick="selectAvatar(this)"><input type="radio" name="avatar" value="female4.png" /></div>
+              </div>
+            </div>
+            <div class="form-field">
+              <label>Username/Login</label>
+              <input id="name-input" type="text" name="name" placeholder="Enter your name here" autofocus required/>
+            </div>
+            <div class="form-field">
+              <label>Room name</label>
+              <input id="room-input" type="text" name="room" placeholder="Enter a name for the room" required/>
+            </div>
+            <div class="form-field">
+              <button>Join</button>
+            </div>
+          </form>
         </div>
-        <div class="form-field">
-          <label>Gender</label>
-          <span>
-            <input type="radio" name="avatar" value="male.png" checked style="margin-left: 50px;" /> Male
-            <input type="radio" name="avatar" value="female.png" style="margin-left: 40px;"/> Female
-          </span>
-        </div>
-        <div class="form-field">
-          <label>Username/Login</label>
-          <input id="name-input" type="text" name="name" placeholder="Enter your name here" autofocus required/>
-        </div>
-        <div class="form-field">
-          <label>Room name</label>
-          <input id="room-input" type="text" name="room" placeholder="Enter a name for the room" required/>
-        </div>
-        <div class="form-field">
-          <button>Join</button>
-        </div>
-      </form>
     </div>
+
+    <footer>
+      <div class="footer-content">
+        <div className="social-media-icons">
+          <a target="_blank" href="https://github.com/KovDimaY/SimpleChat-Socket.io" class="footer-github"><i class="fa fa-github"></i></a>
+          <a target="_blank" href="https://www.facebook.com/dmytro.kovalenko.1004" class="footer-facebook"><i class="fa fa-facebook"></i></a>
+          <a target="_blank" href="https://www.vk.com/id11545172" class="footer-vk"><i class="fa fa-vk"></i></a>
+          <a target="_blank" href="https://www.linkedin.com/in/kovalenkodmytro" class="footer-linkedin"><i class="fa fa-linkedin"></i></a>
+        </div>
+        <p class="author">Copyright &copy; Dmytro Kovalenko ;)</p>
+        <p>Avatars are designed by <a target="_blank" href="https://www.flaticon.com/authors/monkik" style="font-weight: bold">monkik</a> from Flaticon</p>
+      </div>
+    </footer>
     <script src="js/libs/jquery-3.3.1.min.js"></script>
     <script src="js/index.js"></script>
   </body>

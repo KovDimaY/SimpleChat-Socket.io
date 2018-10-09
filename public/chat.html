@@ -4,12 +4,18 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <title>Chat | SimpleChat</title>
+    <link href="./css/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/css/styles.css">
+    <link rel="icon" href="/img/favicon.png" type="image/x-icon">
   </head>
 
   <body class="chat">
     <div class="chat__sidebar">
-      <h3>People</h3>
+      <h3>Room:</h3>
+      <div class="room-name-wrapper">
+        <h5 id="room-name"></h5>
+        <i title="Copy to clipboard" class="fa fa-clone clone-icon" onclick="copyToClipboard()"></i>
+      </div>
       <div id="users"></div>
     </div>
 
@@ -35,12 +41,12 @@
     <script id="message" type="text/template">
       <li class="message">
         <div class="avatar__container" style="background-image: url(./img/avatars/{{avatar}});">
-          <div class="avatar">
+          <div class="avatar-in-chat">
           </div>
         </div>
         <div class="message__text">
           <div class="message__title">
-            <h4>{{from}}</h4>
+            <h4 style="color:{{color}}">{{from}}</h4>
             <span>{{timestamp}}</span>
           </div>
           <div class="message__body">
@@ -57,7 +63,7 @@
         </div>
         <div class="message__text">
           <div class="message__title">
-            <h4>{{from}}</h4>
+            <h4 style="color:{{color}}">{{from}}</h4>
             <span>{{timestamp}}</span>
           </div>
           <div class="message__body">

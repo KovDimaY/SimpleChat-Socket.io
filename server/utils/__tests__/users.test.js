@@ -31,7 +31,7 @@ describe('Users class:', () => {
         id: 123,
         name: "testName",
         room: "testRoom",
-        avatar: "male.png"
+        avatar: "male0.png"
       };
 
       users.addUser(user.id, user.name, user.room, user.avatar);
@@ -39,7 +39,8 @@ describe('Users class:', () => {
       expect(users.users[0].id).toBe(user.id);
       expect(users.users[0].name).toBe(user.name);
       expect(users.users[0].room).toBe(user.room);
-      expect(users.users[0].avatar).toBe('male.png');
+      expect(users.users[0].avatar).toBe('male0.png');
+      expect(users.users[0].color).toBeTruthy();
     });
 
     it('should add new user without avatar', () => {
@@ -56,6 +57,7 @@ describe('Users class:', () => {
       expect(users.users[0].name).toBe(user.name);
       expect(users.users[0].room).toBe(user.room);
       expect(users.users[0].avatar).toBe('404.png');
+      expect(users.users[0].color).toBeTruthy();
     });
   });
 
@@ -137,6 +139,50 @@ describe('Users class:', () => {
       const names = users.getUsernamesList('ololo');
 
       expect(names).toEqual([]);
+    });
+  });
+
+  describe('isUniqueName', () => {
+    beforeEach(populateUsers);
+
+    it('should return true for a unique name', () => {
+      const result = users.isUniqueName('this is a unique name', 'testRoom1');
+
+      expect(result).toEqual(true);
+    });
+
+    it('should return false for a duplicated name', () => {
+      const result = users.isUniqueName('testName1', 'testRoom1');
+
+      expect(result).toEqual(false);
+    });
+
+    it('should return true for a duplicated name from another room', () => {
+      const result = users.isUniqueName('testName1', 'testRoom2');
+
+      expect(result).toEqual(true);
+    });
+  });
+
+  describe('assignColor', () => {
+    it('should return the first element if the input has only one element', () => {
+      for (let i = 0; i < 100; i += 1) {
+        const input = ["A"];
+        const result = users.assignColor(input);
+        const expected = "A";
+
+        expect(result).toEqual(expected);
+      }
+
+    });
+
+    it('should always return elements from the input array', () => {
+      for (let i = 0; i < 100; i += 1) {
+        const input = ["A", "B", "C", "D", "E", "F", "G"];
+        const result = users.assignColor(input);
+
+        expect(input).toContain(result);
+      }
     });
   });
 });
