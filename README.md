@@ -1,11 +1,11 @@
 # SimpleChat-Socket.io
-![GitHub build](https://img.shields.io/badge/build-passing-brightgreen.svg) ![GitHub version](https://img.shields.io/badge/version-2.0.0-yellow.svg) ![GitHub demo](https://img.shields.io/badge/demo-available-green.svg) ![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)
+![GitHub build](https://img.shields.io/badge/build-passing-brightgreen.svg) ![GitHub version](https://img.shields.io/badge/version-2.0.1-yellow.svg) ![GitHub demo](https://img.shields.io/badge/demo-available-green.svg) ![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)
 
 
 
 This is a simple chat with different rooms. The purpose of the project is to learn and practice how to use Socket.io and to have fun! This is my first project where I incorporated projects from GitHub to manage the process of development and also this is the first project where I use versions and releases. Just tried to make it a bit more organized and to feel like a real company development process. Hope you like it :D
 
-The last deployed version is **SimpleChat v2.0.0**.
+The last deployed version is **SimpleChat v2.0.1**.
 
 You can check it live at: https://simplechat-kovdimay.herokuapp.com/
 

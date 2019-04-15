@@ -89,10 +89,13 @@ button:disabled {
 
 .centered-form {
   display: flex;
+  flex-wrap: wrap;
+  overflow: scroll;
   align-items: center;
   padding-bottom: 50px;
   padding-top: 20px;
   width: 100vw;
+  height: 100vh;
   justify-content: center;
   background: -moz-linear-gradient(125deg, rgba(39,107,130,1) 0%, rgba(49,84,129,1) 100%); /* ff3.6+ */
   background: -webkit-gradient(linear, left top, right bottom, color-stop(0%, rgba(49,84,129,1)), color-stop(100%, rgba(39,107,130,1))); /* safari4+,chrome */
@@ -264,6 +267,7 @@ button:disabled {
 }
 
 footer {
+  position: relative;
   padding: 10px;
   width: 100%;
   background-color: darkred;
