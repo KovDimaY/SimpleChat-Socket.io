@@ -4,7 +4,7 @@ const createMessage = (from, text, avatar, color) => {
     text,
     avatar,
     color,
-    timestamp: new Date().getTime()
+    timestamp: new Date().getTime(),
   };
 };
 
@@ -14,7 +14,7 @@ const createLocation = (from, lat, lon, avatar, color) => {
     avatar,
     color,
     url: `https://www.google.es/maps?q=${lat},${lon}`,
-    timestamp: new Date().getTime()
+    timestamp: new Date().getTime(),
   };
 };
 

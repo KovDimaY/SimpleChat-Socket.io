@@ -1,4 +1,4 @@
-const isValidName = (name) => {
+const isValidName = name => {
   return typeof name === 'string' && name.trim().length > 0;
 };
 

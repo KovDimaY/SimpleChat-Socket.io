@@ -5,22 +5,26 @@ const { Users } = require('../users.js');
 let users;
 const populateUsers = () => {
   users = new Users();
-  users.users = [{
-    id: 111,
-    name: "testName1",
-    room: "testRoom1",
-    avatar: "male.jpg"
-  }, {
-    id: 222,
-    name: "testName2",
-    room: "testRoom2",
-    avatar: "female.jpg"
-  }, {
-    id: 333,
-    name: "testName3",
-    room: "testRoom1",
-    avatar: "admin-1.jpg"
-  }];
+  users.users = [
+    {
+      id: 111,
+      name: 'testName1',
+      room: 'testRoom1',
+      avatar: 'male.jpg',
+    },
+    {
+      id: 222,
+      name: 'testName2',
+      room: 'testRoom2',
+      avatar: 'female.jpg',
+    },
+    {
+      id: 333,
+      name: 'testName3',
+      room: 'testRoom1',
+      avatar: 'admin-1.jpg',
+    },
+  ];
 };
 
 describe('Users class:', () => {
@@ -29,9 +33,9 @@ describe('Users class:', () => {
       const users = new Users();
       const user = {
         id: 123,
-        name: "testName",
-        room: "testRoom",
-        avatar: "male0.png"
+        name: 'testName',
+        room: 'testRoom',
+        avatar: 'male0.png',
       };
 
       users.addUser(user.id, user.name, user.room, user.avatar);
@@ -47,8 +51,8 @@ describe('Users class:', () => {
       const users = new Users();
       const user = {
         id: 123,
-        name: "testName",
-        room: "testRoom"
+        name: 'testName',
+        room: 'testRoom',
       };
 
       users.addUser(user.id, user.name, user.room, user.avatar);
@@ -167,18 +171,17 @@ describe('Users class:', () => {
   describe('assignColor', () => {
     it('should return the first element if the input has only one element', () => {
       for (let i = 0; i < 100; i += 1) {
-        const input = ["A"];
+        const input = ['A'];
         const result = users.assignColor(input);
-        const expected = "A";
+        const expected = 'A';
 
         expect(result).toEqual(expected);
       }
-
     });
 
     it('should always return elements from the input array', () => {
       for (let i = 0; i < 100; i += 1) {
-        const input = ["A", "B", "C", "D", "E", "F", "G"];
+        const input = ['A', 'B', 'C', 'D', 'E', 'F', 'G'];
         const result = users.assignColor(input);
 
         expect(input).toContain(result);
