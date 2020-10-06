@@ -2,12 +2,14 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-family: 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial,
+    'Lucida Grande', sans-serif;
   font-weight: 300;
-  font-size: .95rem;
+  font-size: 0.95rem;
 }
 
-ul, li {
+ul,
+li {
   list-style-position: inside;
 }
 
@@ -22,8 +24,8 @@ This is styles for the initial page avatars
 */
 
 .avatar-selection-container {
-  width:100%;
-  text-align:center;
+  width: 100%;
+  text-align: center;
 }
 
 .avatar-selection {
@@ -54,18 +56,19 @@ This is styles for the initial page avatars
   display: none;
 }
 
-button, .swal-button {
+button,
+.swal-button {
   border: none;
   background: #265f82;
   color: white;
   cursor: pointer;
   padding: 10px;
-  transition: background .3s ease;
+  transition: background 0.3s ease;
 }
 
 button:hover {
   border: none;
-  background: #1F4C69;
+  background: #1f4c69;
   color: white;
   padding: 10px;
 }
@@ -97,12 +100,38 @@ button:disabled {
   width: 100vw;
   height: 100vh;
   justify-content: center;
-  background: -moz-linear-gradient(125deg, rgba(39,107,130,1) 0%, rgba(49,84,129,1) 100%); /* ff3.6+ */
-  background: -webkit-gradient(linear, left top, right bottom, color-stop(0%, rgba(49,84,129,1)), color-stop(100%, rgba(39,107,130,1))); /* safari4+,chrome */
-  background: -webkit-linear-gradient(125deg, rgba(39,107,130,1) 0%, rgba(49,84,129,1) 100%); /* safari5.1+,chrome10+ */
-  background: -o-linear-gradient(125deg, rgba(39,107,130,1) 0%, rgba(49,84,129,1) 100%); /* opera 11.10+ */
-  background: -ms-linear-gradient(125deg, rgba(39,107,130,1) 0%, rgba(49,84,129,1) 100%); /* ie10+ */
-  background: linear-gradient(325deg, rgba(39,107,130,1) 0%, rgba(49,84,129,1) 100%); /* w3c */
+  background: -moz-linear-gradient(
+    125deg,
+    rgba(39, 107, 130, 1) 0%,
+    rgba(49, 84, 129, 1) 100%
+  ); /* ff3.6+ */
+  background: -webkit-gradient(
+    linear,
+    left top,
+    right bottom,
+    color-stop(0%, rgba(49, 84, 129, 1)),
+    color-stop(100%, rgba(39, 107, 130, 1))
+  ); /* safari4+,chrome */
+  background: -webkit-linear-gradient(
+    125deg,
+    rgba(39, 107, 130, 1) 0%,
+    rgba(49, 84, 129, 1) 100%
+  ); /* safari5.1+,chrome10+ */
+  background: -o-linear-gradient(
+    125deg,
+    rgba(39, 107, 130, 1) 0%,
+    rgba(49, 84, 129, 1) 100%
+  ); /* opera 11.10+ */
+  background: -ms-linear-gradient(
+    125deg,
+    rgba(39, 107, 130, 1) 0%,
+    rgba(49, 84, 129, 1) 100%
+  ); /* ie10+ */
+  background: linear-gradient(
+    325deg,
+    rgba(39, 107, 130, 1) 0%,
+    rgba(49, 84, 129, 1) 100%
+  ); /* w3c */
 }
 
 .centered-form__form {
@@ -128,7 +157,8 @@ button:disabled {
   font-weight: bold;
 }
 
-.form-field input, .form-field select {
+.form-field input,
+.form-field select {
   border: 1px solid #e1e1e1;
   padding: 10px;
 }
@@ -141,12 +171,38 @@ button:disabled {
   overflow-y: scroll;
   width: 260px;
   height: 100vh;
-  background: -moz-linear-gradient(125deg, rgba(39,107,130,1) 0%, rgba(49,84,129,1) 100%); /* ff3.6+ */
-  background: -webkit-gradient(linear, left top, right bottom, color-stop(0%, rgba(49,84,129,1)), color-stop(100%, rgba(39,107,130,1))); /* safari4+,chrome */
-  background: -webkit-linear-gradient(125deg, rgba(39,107,130,1) 0%, rgba(49,84,129,1) 100%); /* safari5.1+,chrome10+ */
-  background: -o-linear-gradient(125deg, rgba(39,107,130,1) 0%, rgba(49,84,129,1) 100%); /* opera 11.10+ */
-  background: -ms-linear-gradient(125deg, rgba(39,107,130,1) 0%, rgba(49,84,129,1) 100%); /* ie10+ */
-  background: linear-gradient(325deg, rgba(39,107,130,1) 0%, rgba(49,84,129,1) 100%); /* w3c */
+  background: -moz-linear-gradient(
+    125deg,
+    rgba(39, 107, 130, 1) 0%,
+    rgba(49, 84, 129, 1) 100%
+  ); /* ff3.6+ */
+  background: -webkit-gradient(
+    linear,
+    left top,
+    right bottom,
+    color-stop(0%, rgba(49, 84, 129, 1)),
+    color-stop(100%, rgba(39, 107, 130, 1))
+  ); /* safari4+,chrome */
+  background: -webkit-linear-gradient(
+    125deg,
+    rgba(39, 107, 130, 1) 0%,
+    rgba(49, 84, 129, 1) 100%
+  ); /* safari5.1+,chrome10+ */
+  background: -o-linear-gradient(
+    125deg,
+    rgba(39, 107, 130, 1) 0%,
+    rgba(49, 84, 129, 1) 100%
+  ); /* opera 11.10+ */
+  background: -ms-linear-gradient(
+    125deg,
+    rgba(39, 107, 130, 1) 0%,
+    rgba(49, 84, 129, 1) 100%
+  ); /* ie10+ */
+  background: linear-gradient(
+    325deg,
+    rgba(39, 107, 130, 1) 0%,
+    rgba(49, 84, 129, 1) 100%
+  ); /* w3c */
 }
 
 .chat__sidebar h3 {
@@ -271,7 +327,12 @@ footer {
   padding: 10px;
   width: 100%;
   background-color: darkred;
-  background: linear-gradient(to right, rgba(39,107,130,1),rgba(49,84,129,1),rgba(39,107,130,1));
+  background: linear-gradient(
+    to right,
+    rgba(39, 107, 130, 1),
+    rgba(49, 84, 129, 1),
+    rgba(39, 107, 130, 1)
+  );
   box-shadow: 0px -5px 20px black;
   color: white;
   text-align: center;
@@ -301,10 +362,6 @@ footer a {
   color: white;
   font-size: 12px;
 }
-
-
-
-
 
 footer .social-media-icons {
   float: right;
@@ -374,8 +431,8 @@ footer .footer-linkedin:hover i {
   left: 50%;
   top: 50%;
   -webkit-transform: translate(-50%, -50%);
-      -ms-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }
 
 .notfound {
@@ -396,8 +453,8 @@ footer .footer-linkedin:hover i {
   left: 50%;
   top: 50%;
   -webkit-transform: translate(-50%, -50%);
-      -ms-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
   font-size: 252px;
   font-weight: 900;
   margin: 0px;
@@ -407,7 +464,7 @@ footer .footer-linkedin:hover i {
   margin-left: -20px;
 }
 
-.notfound .notfound-404 h1>span {
+.notfound .notfound-404 h1 > span {
   font-family: 'Montserrat', sans-serif;
   text-shadow: -8px 0px 0px #fff;
   font-size: 252px;
@@ -442,7 +499,7 @@ footer .footer-linkedin:hover i {
   color: white;
   cursor: pointer;
   padding: 10px;
-  transition: background .3s ease;
+  transition: background 0.3s ease;
   font-size: 16px;
   text-decoration: none;
 }
@@ -458,7 +515,7 @@ footer .footer-linkedin:hover i {
   .notfound .notfound-404 h1 {
     font-size: 200px;
   }
-  .notfound .notfound-404 h1>span {
+  .notfound .notfound-404 h1 > span {
     font-size: 200px;
   }
 }
@@ -476,7 +533,7 @@ footer .footer-linkedin:hover i {
     font-size: 16px;
   }
 
-  .notfound .notfound-404 h1>span {
+  .notfound .notfound-404 h1 > span {
     font-family: 'Montserrat', sans-serif;
     text-shadow: -8px 0px 0px #fff;
     font-size: 162px;
