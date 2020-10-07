@@ -21,17 +21,9 @@
 
     <div class="chat__main">
       <ol id="messages" class="chat__messages"></ol>
-
       <div class="chat__footer">
         <form id="message-form">
-          <input
-            id="message-input"
-            name="message"
-            type="text"
-            placeholder="Enter your message"
-            autofocus
-            autocomplete="off"
-          />
+          <input id="message-input" name="message" type="text" placeholder="Enter your message" autocomplete="off" autofocus />
           <button>Send</button>
         </form>
         <button id="send-location">Send location</button>
@@ -41,8 +33,7 @@
     <script id="message" type="text/template">
       <li class="message">
         <div class="avatar__container" style="background-image: url(./img/avatars/{{avatar}});">
-          <div class="avatar-in-chat">
-          </div>
+          <div class="avatar-in-chat"></div>
         </div>
         <div class="message__text">
           <div class="message__title">
@@ -55,11 +46,11 @@
         </div>
       </li>
     </script>
+
     <script id="location" type="text/template">
       <li class="message">
         <div class="avatar__container" style="background-image: url(./img/avatars/{{avatar}});">
-          <div class="avatar">
-          </div>
+          <div class="avatar"></div>
         </div>
         <div class="message__text">
           <div class="message__title">
@@ -74,6 +65,7 @@
         </div>
       </li>
     </script>
+
     <script src="socket.io/socket.io.js"></script>
     <script src="js/libs/jquery-3.3.1.min.js"></script>
     <script src="js/libs/moment.js"></script>

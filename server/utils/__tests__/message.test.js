@@ -5,8 +5,8 @@ const { createMessage, createLocation } = require('../message.js');
 describe('createMessage', () => {
   it('should generate correct message object', () => {
     const input = {
-      from: "Name",
-      text: "Some text"
+      from: 'Name',
+      text: 'Some text',
     };
 
     const result = createMessage(input.from, input.text);
@@ -20,11 +20,11 @@ describe('createMessage', () => {
 describe('createLocation', () => {
   it('should generate correct location object', () => {
     const input = {
-      from: "Name",
+      from: 'Name',
       lat: 123,
-      lon: 456
+      lon: 456,
     };
-    const expectedUrl = 'https://www.google.es/maps?q=123,456'
+    const expectedUrl = 'https://www.google.es/maps?q=123,456';
 
     const result = createLocation(input.from, input.lat, input.lon);
 

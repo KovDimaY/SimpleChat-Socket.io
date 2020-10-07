@@ -16,39 +16,38 @@ function scrollToBottom() {
 
 function copyToClipboard() {
   const text = jQuery('#room-name').html();
-  const dummy = document.createElement("input");
+  const dummy = document.createElement('input');
   document.body.appendChild(dummy);
   dummy.setAttribute('value', text);
   dummy.select();
-  document.execCommand("copy");
+  document.execCommand('copy');
   document.body.removeChild(dummy);
 }
 
-socket.on('connect', function() {
+socket.on('connect', function () {
   const params = jQuery.deparam(window.location.search);
 
-  socket.emit('join', params, function(err) {
+  socket.emit('join', params, function (err) {
     if (err) {
-      swal("Error", err, "error").then(function() {
+      swal('Error', err, 'error').then(function () {
         window.location.href = '/';
       });
     } else {
-
     }
   });
 });
 
-socket.on('disconnect', function() {});
+socket.on('disconnect', function () {});
 
-socket.on('updateUserList', function(users) {
+socket.on('updateUserList', function (users) {
   var ul = jQuery('<ul></ul>');
-  users.forEach(function(user) {
+  users.forEach(function (user) {
     ul.append(jQuery('<li></li>').text(user));
   });
   jQuery('#users').html(ul);
 });
 
-socket.on('newMessage', function(message) {
+socket.on('newMessage', function (message) {
   const { from, text } = message;
   let avatar = message.avatar;
   let color = message.color;
@@ -63,7 +62,7 @@ socket.on('newMessage', function(message) {
   scrollToBottom();
 });
 
-socket.on('newLocation', function(message) {
+socket.on('newLocation', function (message) {
   const { from, url, avatar, color } = message;
   const timestamp = moment(message.timestamp).format('DD MMM, hh:mm:ss');
   const template = jQuery('#location').html();
@@ -72,8 +71,7 @@ socket.on('newLocation', function(message) {
   scrollToBottom();
 });
 
-
-jQuery('#message-form').on('submit', function(e) {
+jQuery('#message-form').on('submit', function (e) {
   e.preventDefault();
   const messageInput = jQuery('#message-input');
   const from = 'User';
@@ -81,7 +79,7 @@ jQuery('#message-form').on('submit', function(e) {
   messageInput.val('');
 
   if (text && text.trim().length > 0) {
-    socket.emit('createMessage', { from, text }, function(err) {
+    socket.emit('createMessage', { from, text }, function (err) {
       if (err) {
         messageInput.val(text);
       }
@@ -90,33 +88,40 @@ jQuery('#message-form').on('submit', function(e) {
 });
 
 const locationButton = jQuery('#send-location');
-locationButton.on('click', function() {
+locationButton.on('click', function () {
   if (!(navigator && navigator.geolocation)) {
-    return alert("Geolocation is not supported by your browser");
+    return alert('Geolocation is not supported by your browser');
   }
   locationButton.attr('disabled', 'disabled');
-  locationButton.text('Sending location...',);
-  navigator.geolocation.getCurrentPosition(function(position) {
-    locationButton.removeAttr('disabled');
-    locationButton.text('Send location');
-    socket.emit('createLocation', {
-      lat: position.coords.latitude,
-      lon: position.coords.longitude,
-    }, function(err) {
-      if (err) {
-        console.log(err);
-      }
-    });
-  }, function() {
-    alert('Unable to get your location. Make sure you have permissions enabled.');
-  });
+  locationButton.text('Sending location...');
+  navigator.geolocation.getCurrentPosition(
+    function (position) {
+      locationButton.removeAttr('disabled');
+      locationButton.text('Send location');
+      socket.emit(
+        'createLocation',
+        {
+          lat: position.coords.latitude,
+          lon: position.coords.longitude,
+        },
+        function (err) {
+          if (err) {
+            console.log(err);
+          }
+        }
+      );
+    },
+    function () {
+      alert('Unable to get your location. Make sure you have permissions enabled.');
+    }
+  );
 });
 
-window.onload = function() {
+window.onload = function () {
   const urlParams = new URLSearchParams(window.location.search);
   const room = urlParams.get('room');
   const roomNode = jQuery('#room-name');
 
   roomNode.html(room);
   roomNode.prop('title', room);
-}
+};

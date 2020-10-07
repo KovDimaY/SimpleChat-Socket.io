@@ -1,6 +1,16 @@
 const _ = require('lodash');
 
-const colors = ["#7cb5ec","#90ed7d","#f7a35c","#8085e9","#f15c80","#e4d354","#2b908f","#f45b5b","#91e8e1"];
+const colors = [
+  '#7cb5ec',
+  '#90ed7d',
+  '#f7a35c',
+  '#8085e9',
+  '#f15c80',
+  '#e4d354',
+  '#2b908f',
+  '#f45b5b',
+  '#91e8e1',
+];
 const validAvatars = [
   'male0.png',
   'female0.png',
@@ -11,7 +21,7 @@ const validAvatars = [
   'male3.png',
   'female3.png',
   'male4.png',
-  'female4.png'
+  'female4.png',
 ];
 
 /***
